@@ -1,8 +1,9 @@
 <idea-plugin version="2">
-  <name>Plugin name here</name>
-  <description>short description of the plugin</description>
+  <id>com.intellij.plugins.haxe</id>
+  <name>haXe language</name>
+  <description>haXe language plugin</description>
   <version>1.0</version>
-  <vendor>YourCompany</vendor>
+  <vendor>Fedor Korotkov</vendor>
   <idea-version since-build="8000"/>
 
   <application-components>
@@ -18,6 +19,6 @@
   </actions>
 
   <extensions defaultExtensionNs="com.intellij">
-    <!-- Add your extensions here -->
+      <fileTypeFactory implementation="com.intellij.plugins.haxe.HaxeFileTypeLoader"/>
   </extensions>
 </idea-plugin>
