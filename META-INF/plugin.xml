@@ -19,6 +19,8 @@
   </actions>
 
   <extensions defaultExtensionNs="com.intellij">
+      <sdkType implementation="com.intellij.plugins.haxe.config.sdk.HaxeSdkType"/>
+      <moduleType id="HAXE_MODULE" implementationClass="com.intellij.plugins.haxe.ide.HaxeModuleType" classpathProvider="true"/>
       <fileTypeFactory implementation="com.intellij.plugins.haxe.HaxeFileTypeLoader"/>
   </extensions>
 </idea-plugin>
