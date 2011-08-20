@@ -5,12 +5,13 @@ import com.intellij.openapi.compiler.ValidityState;
 import com.intellij.openapi.vfs.VirtualFile;
 import org.jetbrains.annotations.NotNull;
 
-class HaxeProcessingItem implements FileProcessingCompiler.ProcessingItem{
+class HaxeProcessingItem implements FileProcessingCompiler.ProcessingItem {
     private VirtualFile virtualFile;
 
     public HaxeProcessingItem(VirtualFile file) {
         virtualFile = file;
     }
+
     @NotNull
     public VirtualFile getFile() {
         return virtualFile;
