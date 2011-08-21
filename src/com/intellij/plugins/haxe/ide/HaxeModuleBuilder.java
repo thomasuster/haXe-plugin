@@ -11,7 +11,8 @@ import com.intellij.openapi.roots.ModifiableRootModel;
 import com.intellij.plugins.haxe.config.sdk.HaxeSdkType;
 import org.jetbrains.annotations.NotNull;
 
-public class HaxeModuleBuilder extends JavaModuleBuilder implements SourcePathsBuilder, ModuleBuilderListener { @Override
+public class HaxeModuleBuilder extends JavaModuleBuilder implements SourcePathsBuilder, ModuleBuilderListener {
+    @Override
     public void setupRootModel(ModifiableRootModel modifiableRootModel) throws ConfigurationException {
         addListener(this);
         super.setupRootModel(modifiableRootModel);

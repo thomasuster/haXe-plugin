@@ -11,7 +11,9 @@
   </application-components>
 
   <project-components>
-    <!-- Add your project components here -->
+        <component>
+            <implementation-class>com.intellij.plugins.haxe.components.HaxeCompilerLoader</implementation-class>
+        </component>
   </project-components>
 
   <actions>
@@ -22,5 +24,7 @@
       <sdkType implementation="com.intellij.plugins.haxe.config.sdk.HaxeSdkType"/>
       <moduleType id="HAXE_MODULE" implementationClass="com.intellij.plugins.haxe.ide.HaxeModuleType" classpathProvider="true"/>
       <fileTypeFactory implementation="com.intellij.plugins.haxe.HaxeFileTypeLoader"/>
+
+      <configurationType implementation="com.intellij.plugins.haxe.runner.HaxeRunConfigurationType"/>
   </extensions>
 </idea-plugin>
