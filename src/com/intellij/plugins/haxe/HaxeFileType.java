@@ -39,7 +39,7 @@ public class HaxeFileType extends LanguageFileType {
     }
 
     public Icon getIcon() {
-        return null;
+        return HaxeIcons.HAXE_ICON_16x16;
     }
 
     public boolean isJVMDebuggingSupported() {

@@ -38,8 +38,14 @@ public class HaxeRunConfigurationEditorForm extends SettingsEditor<HaxeApplicati
         applicationName.getButton().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
-                TreeFileChooser fileChooser = TreeFileChooserFactory.getInstance(project).createFileChooser("haXe Application Chooser", null,
-                        HaxeFileType.HAXE_FILE_TYPE, null, true, false);
+                TreeFileChooser fileChooser = TreeFileChooserFactory.getInstance(project).createFileChooser("haXe Application Chooser",
+                        null,
+                        HaxeFileType.HAXE_FILE_TYPE,
+                        new TreeFileChooser.PsiFileFilter() {
+                            public boolean accept(PsiFile file) {
+                                return true;
+                            }
+                        });
 
                 fileChooser.showDialog();
 
