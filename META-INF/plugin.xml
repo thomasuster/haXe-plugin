@@ -12,6 +12,9 @@
 
   <project-components>
         <component>
+            <implementation-class>com.intellij.plugins.haxe.components.HaxeBundledSdkDetector</implementation-class>
+        </component>
+        <component>
             <implementation-class>com.intellij.plugins.haxe.components.HaxeCompilerLoader</implementation-class>
         </component>
   </project-components>
