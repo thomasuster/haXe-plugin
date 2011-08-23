@@ -63,11 +63,13 @@ public class HaxeRunConfigurationEditorForm extends SettingsEditor<HaxeApplicati
 
     @Override
     protected void resetEditorFrom(HaxeApplicationConfiguration configuration) {
+        applicationName.setText(configuration.getMainClass());
         moduleSelector.reset(configuration);
     }
 
     @Override
     protected void applyEditorTo(HaxeApplicationConfiguration configuration) throws ConfigurationException {
+        configuration.setMainClass(applicationName.getText());
         moduleSelector.applyTo(configuration);
     }
 

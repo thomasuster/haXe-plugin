@@ -17,8 +17,18 @@ import java.util.Arrays;
 import java.util.Collection;
 
 public class HaxeApplicationConfiguration extends ModuleBasedConfiguration<HaxeApplicationModuleBasedConfiguration> {
+    private String mainClass;
+
     public HaxeApplicationConfiguration(String name, Project project, HaxeRunConfigurationType configurationType) {
         super(name, new HaxeApplicationModuleBasedConfiguration(project), configurationType.getConfigurationFactories()[0]);
+    }
+
+    public String getMainClass() {
+        return mainClass;
+    }
+
+    public void setMainClass(String mainClass) {
+        this.mainClass = mainClass;
     }
 
     @Override
