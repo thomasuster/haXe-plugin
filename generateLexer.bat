@@ -1,0 +1,1 @@
+java -jar "%IDEA_HOME%\tools\lexer\jflex-1.4\lib\JFlex.jar" --table --skel "%IDEA_HOME%\tools\lexer\idea-flex.skeleton" --charat --nobak "%CD%\src\com\intellij\plugins\haxe\lang\lexer\haxe.flex"
