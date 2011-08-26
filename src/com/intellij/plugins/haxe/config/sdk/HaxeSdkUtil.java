@@ -41,7 +41,7 @@ public class HaxeSdkUtil {
             String outputString = output.getStdout();
 
             Matcher matcher = VERSION_MATCHER.matcher(outputString);
-            if ( matcher.find() ) {
+            if (matcher.find()) {
                 return new HaxeSdkData(path, matcher.group(1));
             }
 
@@ -55,6 +55,7 @@ public class HaxeSdkUtil {
     private static boolean checkFolderExists(String path) {
         return checkFolderExists(new File(path));
     }
+
     private static boolean checkFolderExists(File file) {
         return file.exists() && file.isDirectory();
     }

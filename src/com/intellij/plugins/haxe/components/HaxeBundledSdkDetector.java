@@ -31,21 +31,21 @@ public class HaxeBundledSdkDetector implements ApplicationComponent {
         String homePath = PathManager.getHomePath() + "/bundled/haxe-sdk";
 
         File bundledHaxeSdkHomePath = new File(homePath);
-        if ( ! bundledHaxeSdkHomePath.exists() || ! bundledHaxeSdkHomePath.isDirectory() ) {
+        if (!bundledHaxeSdkHomePath.exists() || !bundledHaxeSdkHomePath.isDirectory()) {
             return;
         }
 
         LOG.debug("Bundled haXe SDK path exists: " + homePath);
 
         for (Sdk sdk : haxeSdks) {
-            if ( homePath.startsWith(sdk.getHomePath()) ) {
+            if (homePath.startsWith(sdk.getHomePath())) {
                 LOG.debug("Bundled haXe SDK at registered already with name: " + sdk.getName());
                 return;
             }
         }
 
         HaxeSdkData sdkData = HaxeSdkUtil.testHaxeSdk(homePath);
-        if ( sdkData == null ) {
+        if (sdkData == null) {
             return;
         }
 
