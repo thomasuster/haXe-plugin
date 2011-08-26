@@ -1,11 +1,16 @@
 package com.intellij.plugins.haxe;
 
 import com.intellij.lang.Language;
+import com.intellij.openapi.editor.colors.EditorColorsScheme;
+import com.intellij.openapi.editor.highlighter.EditorHighlighter;
 import com.intellij.openapi.fileTypes.LanguageFileType;
+import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.CharsetToolkit;
 import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.plugins.haxe.highlight.HaxeEditorHighlighter;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 
@@ -49,5 +54,9 @@ public class HaxeFileType extends LanguageFileType {
     @Override
     public String getCharset(@NotNull VirtualFile file, byte[] content) {
         return CharsetToolkit.UTF8;
+    }
+
+    public EditorHighlighter getEditorHighlighter(@Nullable Project project, @Nullable VirtualFile virtualFile, @NotNull EditorColorsScheme colors) {
+        return new HaxeEditorHighlighter(colors, project, virtualFile);
     }
 }
