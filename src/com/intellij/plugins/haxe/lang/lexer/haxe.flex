@@ -179,27 +179,34 @@ mIDENT = {mLETTER} ({mLETTER} | {mDIGIT} )*
 
 ":="                                      { return oVAR_ASSIGN; }
 
+"new"                                     { return oNEW; }
+
 
 "break"                                   { return( kBREAK );  }
 "default"                                 { return( kDEFAULT );  }
 "package"                                 { return( kPACKAGE );  }
 "function"                                { return( kFUNCTION );  }
-"interface"                               { return( kINTERFACE );  }
 
 "case"                                    { return( kCASE );  }
 
-"struct"                                  {  return( kSTRUCT );  }
-"else"                                    {  return( kELSE );  }
-"switch"                                  {  return( kSWITCH );  }
-"const"                                   {  return( kCONST ); }
+"class"                                   {  return( kCLASS );  }
+"enum"                                    {  return( kENUM );  }
+"interface"                               {  return( kINTERFACE );  }
+
+"implements"                              {  return( kIMPLEMENTS );  }
+"extends"                                 {  return( kEXTENDS );  }
 
 "if"                                      {  return kIF ;  }
 "for"                                     {  return kFOR ;  }
 "return"                                  {  return kRETURN ;  }
 "import"                                  {  return kIMPORT ;  }
 "continue"                                {  return kCONTINUE ;  }
+"else"                                    {  return kELSE ;  }
+"switch"                                  {  return kSWITCH ;  }
+"throw"                                   {  return kTHROW ;  }
 
 "var"                                     {  return kVAR;  }
+"const"                                   {  return kCONST ; }
 
 {mIDENT}                                  {  return mIDENT; }
 

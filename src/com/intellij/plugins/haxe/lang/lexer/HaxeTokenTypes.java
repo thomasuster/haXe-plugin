@@ -24,7 +24,15 @@ public interface HaxeTokenTypes {
 
     IElementType kCASE = new HaxeElementTypeImpl("KEYWORD_CASE");
 
-    IElementType kSTRUCT = new HaxeElementTypeImpl("KEYWORD_STRUCT");
+    IElementType kTHROW = new HaxeElementTypeImpl("KEYWORD_THROW");
+
+    IElementType kCLASS = new HaxeElementTypeImpl("KEYWORD_CLASS");
+    IElementType kENUM = new HaxeElementTypeImpl("KEYWORD_ENUM");
+
+    IElementType kIMPLEMENTS = new HaxeElementTypeImpl("KEYWORD_IMPLEMENTS");
+    IElementType kEXTENDS = new HaxeElementTypeImpl("KEYWORD_EXTENDS");
+
+
     IElementType kELSE = new HaxeElementTypeImpl("KEYWORD_ELSE");
     IElementType kSWITCH = new HaxeElementTypeImpl("KEYWORD_SWITCH");
     IElementType kCONST = new HaxeElementTypeImpl("KEYWORD_CONST");
@@ -35,8 +43,6 @@ public interface HaxeTokenTypes {
     IElementType kIMPORT = new HaxeElementTypeImpl("KEYWORD_IMPORT");
     IElementType kCONTINUE = new HaxeElementTypeImpl("KEYWORD_CONTINUE");
 
-    IElementType kRANGE = new HaxeElementTypeImpl("KEYWORD_RANGE");
-    IElementType kTYPE = new HaxeElementTypeImpl("KEYWORD_TYPE");
     IElementType kVAR = new HaxeElementTypeImpl("KEYWORD_VAR");
 
     IElementType mWRONG = new HaxeElementTypeImpl("WRONG");
@@ -111,4 +117,5 @@ public interface HaxeTokenTypes {
     IElementType oGREATER = new HaxeElementTypeImpl(">");
 
     IElementType oVAR_ASSIGN = new HaxeElementTypeImpl(":=");
+    IElementType oNEW = new HaxeElementTypeImpl("new");
 }
