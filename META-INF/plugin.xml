@@ -28,6 +28,8 @@
       <moduleType id="HAXE_MODULE" implementationClass="com.intellij.plugins.haxe.ide.HaxeModuleType" classpathProvider="true"/>
       <fileTypeFactory implementation="com.intellij.plugins.haxe.HaxeFileTypeLoader"/>
 
+      <lang.parserDefinition language="haXe" implementationClass="com.intellij.plugins.haxe.lang.parser.HaxeParserDefinition"/>
+
       <configurationType implementation="com.intellij.plugins.haxe.runner.HaxeRunConfigurationType"/>
   </extensions>
 </idea-plugin>
