@@ -3,7 +3,9 @@ package com.intellij.plugins.haxe.lang.lexer;
 import com.intellij.psi.TokenType;
 import com.intellij.psi.tree.TokenSet;
 
-public interface HaxeTokenTypeSets extends HaxeTokenTypes {
+import static com.intellij.plugins.haxe.lang.lexer.HaxeTokenTypes.*;
+
+public interface HaxeTokenTypeSets {
 
     static final TokenSet WHITESPACES = TokenSet.create(
             wsWS,
