@@ -1,48 +1,67 @@
 package com.intellij.plugins.haxe.compilation;
 
-import com.intellij.openapi.compiler.ClassInstrumentingCompiler;
+import com.intellij.compiler.OutputParser;
+import com.intellij.compiler.impl.javaCompiler.ExternalCompiler;
+import com.intellij.compiler.impl.javaCompiler.ModuleChunk;
 import com.intellij.openapi.compiler.CompileContext;
 import com.intellij.openapi.compiler.CompileScope;
-import com.intellij.openapi.compiler.ValidityState;
 import com.intellij.openapi.diagnostic.Logger;
-import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.plugins.haxe.HaxeFileType;
+import com.intellij.openapi.options.Configurable;
+import com.intellij.plugins.haxe.HaxeBundle;
 import org.jetbrains.annotations.NotNull;
 
-import java.io.DataInput;
 import java.io.IOException;
 
-public class HaxeCompiler implements ClassInstrumentingCompiler {
+public class HaxeCompiler extends ExternalCompiler {
     private static final Logger LOG = Logger.getInstance("#com.intellij.plugins.haxe.compilation.HaxeCompiler");
 
     @NotNull
-    public String getDescription() {
-        return "haXe Compiler";
+    @Override
+    public String getId() {
+        return "haXe";
     }
 
-    public boolean validateConfiguration(CompileScope scope) {
+    @NotNull
+    public String getDescription() {
+        return HaxeBundle.message("haxe.compiler.description");
+    }
+
+    @NotNull
+    @Override
+    public String getPresentableName() {
+        return HaxeBundle.message("haxe.compiler.name");
+    }
+
+    @Override
+    public OutputParser createErrorParser(@NotNull String outputDir, Process process) {
+        return null;
+    }
+
+    @Override
+    public OutputParser createOutputParser(@NotNull String outputDir) {
+        return null;
+    }
+
+    @Override
+    public boolean checkCompiler(CompileScope scope) {
         return true;
     }
 
-    public ValidityState createValidityState(DataInput in) throws IOException {
+    @Override
+    public void compileFinished() {
+    }
+
+    @NotNull
+    @Override
+    public Configurable createConfigurable() {
+        //TODO
         return null;
     }
 
     @NotNull
-    public ProcessingItem[] getProcessingItems(CompileContext context) {
-        final VirtualFile files[] = context.getProjectCompileScope().getFiles(HaxeFileType.HAXE_FILE_TYPE, true);
-        ProcessingItem[] items = new ProcessingItem[files.length];
-        for (int i = 0; i < items.length; ++i) {
-            items[i] = new HaxeProcessingItem(files[i]);
-        }
-        if (LOG.isDebugEnabled()) {
-            LOG.debug(String.format("[compiling] processing %1$ files", items.length));
-        }
-        return items;
-    }
-
-    public ProcessingItem[] process(CompileContext context, ProcessingItem[] items) {
+    @Override
+    public String[] createStartupCommand(ModuleChunk chunk, CompileContext context, String outputPath) throws IOException, IllegalArgumentException {
         //TODO
-        return ProcessingItem.EMPTY_ARRAY;
+        return new String[0];
     }
 }
