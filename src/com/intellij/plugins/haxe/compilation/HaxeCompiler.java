@@ -1,67 +1,63 @@
 package com.intellij.plugins.haxe.compilation;
 
-import com.intellij.compiler.OutputParser;
-import com.intellij.compiler.impl.javaCompiler.ExternalCompiler;
-import com.intellij.compiler.impl.javaCompiler.ModuleChunk;
+import com.intellij.execution.RunManager;
 import com.intellij.openapi.compiler.CompileContext;
 import com.intellij.openapi.compiler.CompileScope;
+import com.intellij.openapi.compiler.TranslatingCompiler;
 import com.intellij.openapi.diagnostic.Logger;
-import com.intellij.openapi.options.Configurable;
+import com.intellij.openapi.module.Module;
+import com.intellij.openapi.projectRoots.Sdk;
+import com.intellij.openapi.roots.ModuleRootManager;
+import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.plugins.haxe.HaxeBundle;
+import com.intellij.plugins.haxe.config.sdk.HaxeSdkData;
+import com.intellij.plugins.haxe.config.sdk.HaxeSdkType;
+import com.intellij.plugins.haxe.config.sdk.HaxeSdkUtil;
+import com.intellij.plugins.haxe.runner.HaxeRunConfigurationType;
+import com.intellij.util.Chunk;
 import org.jetbrains.annotations.NotNull;
 
-import java.io.IOException;
+import java.util.LinkedList;
 
-public class HaxeCompiler extends ExternalCompiler {
+public class HaxeCompiler implements TranslatingCompiler {
     private static final Logger LOG = Logger.getInstance("#com.intellij.plugins.haxe.compilation.HaxeCompiler");
-
-    @NotNull
-    @Override
-    public String getId() {
-        return "haXe";
-    }
 
     @NotNull
     public String getDescription() {
         return HaxeBundle.message("haxe.compiler.description");
     }
 
-    @NotNull
     @Override
-    public String getPresentableName() {
-        return HaxeBundle.message("haxe.compiler.name");
-    }
-
-    @Override
-    public OutputParser createErrorParser(@NotNull String outputDir, Process process) {
-        return null;
-    }
-
-    @Override
-    public OutputParser createOutputParser(@NotNull String outputDir) {
-        return null;
-    }
-
-    @Override
-    public boolean checkCompiler(CompileScope scope) {
+    public boolean validateConfiguration(CompileScope scope) {
         return true;
     }
 
     @Override
-    public void compileFinished() {
+    public boolean isCompilableFile(VirtualFile file, CompileContext context) {
+        return true;
     }
 
-    @NotNull
     @Override
-    public Configurable createConfigurable() {
-        //TODO
-        return null;
+    public void compile(CompileContext context, Chunk<Module> moduleChunk, VirtualFile[] files, OutputSink sink) {
+        final Sdk jdk = getJdk(moduleChunk);
+        final HaxeSdkType sdkType = (HaxeSdkType) jdk.getSdkType();
+        final HaxeSdkData sdkData = sdkType.getSdkData();
+        final String homePath = sdkData.getHomePath();
+
+        LinkedList<String> commandLine = new LinkedList<String>();
+
+        commandLine.add(HaxeSdkUtil.getCompilerPathByFolderPath(homePath));
+
+        RunManager runManager = RunManager.getInstance(context.getProject());
+
+        runManager.getConfigurations(HaxeRunConfigurationType.getInstance());
     }
 
-    @NotNull
-    @Override
-    public String[] createStartupCommand(ModuleChunk chunk, CompileContext context, String outputPath) throws IOException, IllegalArgumentException {
-        //TODO
-        return new String[0];
+    /**
+     * @return the jdk. Assumes that the jdk is the same for all modules
+     */
+    public Sdk getJdk(Chunk<Module> moduleChunk) {
+        final Module module = moduleChunk.getNodes().iterator().next();
+        return ModuleRootManager.getInstance(module).getSdk();
     }
 }
