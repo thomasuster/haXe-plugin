@@ -47,10 +47,6 @@ public class HaxeCompiler implements TranslatingCompiler {
         LinkedList<String> commandLine = new LinkedList<String>();
 
         commandLine.add(HaxeSdkUtil.getCompilerPathByFolderPath(homePath));
-
-        RunManager runManager = RunManager.getInstance(context.getProject());
-
-        runManager.getConfigurations(HaxeRunConfigurationType.getInstance());
     }
 
     /**
