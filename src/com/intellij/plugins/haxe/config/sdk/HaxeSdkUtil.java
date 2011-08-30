@@ -23,7 +23,7 @@ public class HaxeSdkUtil {
 
         GeneralCommandLine command = new GeneralCommandLine();
         //TODO resolve compiler name depends in OS
-        command.setExePath(path + "/" + COMPILER_NAME);
+        command.setExePath(getCompilerPathByFolderPath(path));
         command.addParameter("-help");
         command.setWorkDirectory(path);
 
@@ -50,6 +50,10 @@ public class HaxeSdkUtil {
             LOG.error("Exception while executing the process:", e);
             return null;
         }
+    }
+
+    public static String getCompilerPathByFolderPath(String folderPath) {
+        return folderPath + "/" + COMPILER_NAME;
     }
 
     private static boolean checkFolderExists(String path) {
