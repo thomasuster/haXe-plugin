@@ -31,8 +31,8 @@ import java.nio.charset.Charset;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class HaxeCompiler implements TranslatingCompiler {
-    private static final Logger LOG = Logger.getInstance("#com.intellij.plugins.haxe.compilation.HaxeCompiler");
+public class HaxeCompilerBase implements TranslatingCompiler {
+    private static final Logger LOG = Logger.getInstance("#com.intellij.plugins.haxe.compilation.HaxeCompilerBase");
 
     @NotNull
     public String getDescription() {

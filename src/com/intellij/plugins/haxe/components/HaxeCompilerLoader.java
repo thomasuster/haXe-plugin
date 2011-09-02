@@ -4,7 +4,7 @@ import com.intellij.openapi.compiler.CompilerManager;
 import com.intellij.openapi.components.AbstractProjectComponent;
 import com.intellij.openapi.project.Project;
 import com.intellij.plugins.haxe.HaxeFileType;
-import com.intellij.plugins.haxe.compilation.HaxeCompiler;
+import com.intellij.plugins.haxe.compilation.HaxeCompilerBase;
 import org.jetbrains.annotations.NotNull;
 
 public class HaxeCompilerLoader extends AbstractProjectComponent {
@@ -20,6 +20,6 @@ public class HaxeCompilerLoader extends AbstractProjectComponent {
     public void projectOpened() {
         CompilerManager compilerManager = CompilerManager.getInstance(myProject);
         compilerManager.addCompilableFileType(HaxeFileType.HAXE_FILE_TYPE);
-        compilerManager.addCompiler(new HaxeCompiler());
+        compilerManager.addCompiler(new HaxeCompilerBase());
     }
 }
