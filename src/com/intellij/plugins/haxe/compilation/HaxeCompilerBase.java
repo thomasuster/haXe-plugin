@@ -1,15 +1,9 @@
 package com.intellij.plugins.haxe.compilation;
 
-import com.intellij.compiler.impl.CompilerUtil;
-import com.intellij.execution.ExecutionException;
 import com.intellij.execution.RunManager;
-import com.intellij.execution.configurations.GeneralCommandLine;
 import com.intellij.execution.configurations.RunConfiguration;
-import com.intellij.execution.process.CapturingProcessHandler;
-import com.intellij.execution.process.ProcessOutput;
 import com.intellij.openapi.compiler.CompileContext;
 import com.intellij.openapi.compiler.CompileScope;
-import com.intellij.openapi.compiler.CompilerMessageCategory;
 import com.intellij.openapi.compiler.TranslatingCompiler;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.module.Module;
@@ -21,17 +15,15 @@ import com.intellij.plugins.haxe.HaxeBundle;
 import com.intellij.plugins.haxe.HaxeFileType;
 import com.intellij.plugins.haxe.config.sdk.HaxeSdkData;
 import com.intellij.plugins.haxe.config.sdk.HaxeSdkType;
-import com.intellij.plugins.haxe.config.sdk.HaxeSdkUtil;
 import com.intellij.plugins.haxe.runner.HaxeApplicationConfiguration;
 import com.intellij.plugins.haxe.runner.HaxeRunConfigurationType;
 import com.intellij.util.Chunk;
 import org.jetbrains.annotations.NotNull;
 
-import java.nio.charset.Charset;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class HaxeCompilerBase implements TranslatingCompiler {
+public abstract class HaxeCompilerBase implements TranslatingCompiler {
     private static final Logger LOG = Logger.getInstance("#com.intellij.plugins.haxe.compilation.HaxeCompilerBase");
 
     @NotNull
@@ -51,42 +43,18 @@ public class HaxeCompilerBase implements TranslatingCompiler {
         final Sdk jdk = getJdk(moduleChunk);
         final HaxeSdkType sdkType = (HaxeSdkType) jdk.getSdkType();
         final HaxeSdkData sdkData = sdkType.getSdkData();
-        final String homePath = sdkData.getHomePath();
-
-        GeneralCommandLine commandLine = new GeneralCommandLine();
-
-        commandLine.setExePath(HaxeSdkUtil.getCompilerPathByFolderPath(homePath));
 
         HaxeApplicationConfiguration applicationConfiguration = getApplicationConfiguration(context.getProject());
 
-        commandLine.addParameter("-main");
-        commandLine.addParameter(getMainClassNameByPath(applicationConfiguration.getMainClass()));
-
-        commandLine.addParameter("-cp");
-        String sourceFolderPath = getSourceFolderByModule(applicationConfiguration.getConfigurationModule().getModule());
-        commandLine.addParameter(CompilerUtil.quotePath(sourceFolderPath));
-
-        ProcessOutput output = null;
-        try {
-            output = new CapturingProcessHandler(
-                    commandLine.createProcess(),
-                    Charset.defaultCharset(),
-                    commandLine.getCommandLineString()).runProcess();
-        } catch (ExecutionException e) {
-            context.addMessage(CompilerMessageCategory.ERROR, "process throw exception: " + e.getMessage(), null, -1, -1);
-            return;
-        }
-
-        if (output.getExitCode() != 0) {
-            context.addMessage(CompilerMessageCategory.WARNING, "process exited with code: " + output.getExitCode(), null, -1, -1);
-            context.addMessage(CompilerMessageCategory.WARNING, "process exited with output: " + output.getStdout(), null, -1, -1);
-        }
+        compileImpl(context, sdkData, applicationConfiguration);
     }
+
+    abstract void compileImpl(CompileContext context, HaxeSdkData sdkData, HaxeApplicationConfiguration applicationConfiguration);
 
     /**
      * @return the jdk. Assumes that the jdk is the same for all modules
      */
-    public Sdk getJdk(Chunk<Module> moduleChunk) {
+    private Sdk getJdk(Chunk<Module> moduleChunk) {
         final Module module = moduleChunk.getNodes().iterator().next();
         return ModuleRootManager.getInstance(module).getSdk();
     }
@@ -100,7 +68,7 @@ public class HaxeCompilerBase implements TranslatingCompiler {
         return null;
     }
 
-    private String getMainClassNameByPath(String path) {
+    protected String getMainClassNameByPath(String path) {
         Pattern pattern = Pattern.compile("\\.*([\\w\\d]+)\\." + HaxeFileType.DEFAULT_EXTENSION);
         Matcher matcher = pattern.matcher(path);
         if (matcher.find()) {
@@ -109,7 +77,7 @@ public class HaxeCompilerBase implements TranslatingCompiler {
         return "";
     }
 
-    private String getSourceFolderByModule(Module module) {
+    protected String getSourceFolderByModule(Module module) {
         VirtualFile moduleDir = module.getModuleFile().getParent();
         VirtualFile sourceDir = moduleDir.findChild("src");
         return sourceDir.getPath();
