@@ -43,6 +43,7 @@ public class MakeHaxeCompile extends HaxeCompilerBase {
         if (output.getExitCode() != 0) {
             context.addMessage(CompilerMessageCategory.WARNING, "process exited with code: " + output.getExitCode(), null, -1, -1);
             context.addMessage(CompilerMessageCategory.WARNING, "process exited with output: " + output.getStdout(), null, -1, -1);
+            context.addMessage(CompilerMessageCategory.WARNING, "process exited with error: " + output.getStderr(), null, -1, -1);
         }
     }
 }
