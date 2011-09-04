@@ -1,35 +1,34 @@
 <idea-plugin version="2">
-  <id>com.intellij.plugins.haxe</id>
-  <name>haXe language</name>
-  <description>haXe language plugin</description>
-  <version>1.0</version>
-  <vendor>Fedor Korotkov</vendor>
-  <idea-version since-build="8000"/>
+    <id>com.intellij.plugins.haxe</id>
+    <name>haXe language</name>
+    <description>haXe language plugin</description>
+    <version>1.0</version>
+    <vendor>Fedor Korotkov</vendor>
+    <idea-version since-build="8000"/>
 
-  <application-components>
-    <!-- Add your application components here -->
-  </application-components>
+    <application-components>
+        <!-- Add your application components here -->
+    </application-components>
 
-  <project-components>
-        <component>
-            <implementation-class>com.intellij.plugins.haxe.components.HaxeBundledSdkDetector</implementation-class>
-        </component>
+    <project-components>
         <component>
             <implementation-class>com.intellij.plugins.haxe.components.HaxeCompilerLoader</implementation-class>
         </component>
-  </project-components>
+    </project-components>
 
-  <actions>
-    <!-- Add your actions here -->
-  </actions>
+    <actions>
+        <!-- Add your actions here -->
+    </actions>
 
-  <extensions defaultExtensionNs="com.intellij">
-      <sdkType implementation="com.intellij.plugins.haxe.config.sdk.HaxeSdkType"/>
-      <moduleType id="HAXE_MODULE" implementationClass="com.intellij.plugins.haxe.ide.HaxeModuleType" classpathProvider="true"/>
-      <fileTypeFactory implementation="com.intellij.plugins.haxe.HaxeFileTypeLoader"/>
+    <extensions defaultExtensionNs="com.intellij">
+        <sdkType implementation="com.intellij.plugins.haxe.config.sdk.HaxeSdkType"/>
+        <moduleType id="HAXE_MODULE" implementationClass="com.intellij.plugins.haxe.ide.HaxeModuleType"
+                    classpathProvider="true"/>
+        <fileTypeFactory implementation="com.intellij.plugins.haxe.HaxeFileTypeLoader"/>
 
-      <lang.parserDefinition language="haXe" implementationClass="com.intellij.plugins.haxe.lang.parser.HaxeParserDefinition"/>
+        <lang.parserDefinition language="haXe"
+                               implementationClass="com.intellij.plugins.haxe.lang.parser.HaxeParserDefinition"/>
 
-      <configurationType implementation="com.intellij.plugins.haxe.runner.HaxeRunConfigurationType"/>
-  </extensions>
+        <configurationType implementation="com.intellij.plugins.haxe.runner.HaxeRunConfigurationType"/>
+    </extensions>
 </idea-plugin>
