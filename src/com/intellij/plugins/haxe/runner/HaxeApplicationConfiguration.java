@@ -47,7 +47,6 @@ public class HaxeApplicationConfiguration extends ModuleBasedConfiguration<HaxeA
     }
 
     public RunProfileState getState(@NotNull Executor executor, @NotNull ExecutionEnvironment env) throws ExecutionException {
-        //TODO implement run action
-        return null;
+        return new HaxeRunningState(env, getConfigurationModule().getModule());
     }
 }
