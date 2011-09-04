@@ -3,6 +3,8 @@ package com.intellij.plugins.haxe.runner;
 import com.intellij.execution.ExecutionException;
 import com.intellij.execution.configurations.CommandLineState;
 import com.intellij.execution.configurations.GeneralCommandLine;
+import com.intellij.execution.filters.TextConsoleBuilder;
+import com.intellij.execution.filters.TextConsoleBuilderFactory;
 import com.intellij.execution.process.OSProcessHandler;
 import com.intellij.execution.process.ProcessHandler;
 import com.intellij.execution.runners.ExecutionEnvironment;
@@ -14,9 +16,6 @@ import com.intellij.plugins.haxe.config.sdk.HaxeSdkUtil;
 import com.intellij.plugins.haxe.util.CompilationUtil;
 
 public class HaxeRunningState extends CommandLineState {
-    private static final String ID = "haXe Console";
-    private static final String TITLE = "haXe Console Output";
-
     private Module module;
 
     public HaxeRunningState(ExecutionEnvironment env, Module module) {
@@ -33,6 +32,9 @@ public class HaxeRunningState extends CommandLineState {
 
         commandLine.setExePath(HaxeSdkUtil.getVMPathByFolderPath(sdkData.getHomePath()));
         commandLine.addParameter(CompilationUtil.getNekoBinPathForModule(module));
+
+        final TextConsoleBuilder consoleBuilder = TextConsoleBuilderFactory.getInstance().createBuilder(module.getProject());
+        setConsoleBuilder(consoleBuilder);
 
         return new OSProcessHandler(commandLine.createProcess(), commandLine.getCommandLineString());
     }
