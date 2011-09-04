@@ -16,14 +16,18 @@ public class HaxeSdkUtil {
     private static final Pattern VERSION_MATCHER = Pattern.compile("(\\d+(\\.\\d+)+)");
     public final static String COMPILER_FOLDER = "haxe";
     public final static String COMPILER_NAME = "haxe.exe";
+    public final static String NEKO_FOLDER = "neko";
+    public final static String NEKO_NAME = "neko.exe";
 
+    /*
+        TODO check VM. Not only compiler.
+     */
     public static HaxeSdkData testHaxeSdk(String path) {
         if (!checkFolderExists(path)) {
             return null;
         }
 
         GeneralCommandLine command = new GeneralCommandLine();
-        //TODO resolve compiler name depends in OS
         command.setExePath(getCompilerPathByFolderPath(path));
         command.addParameter("-help");
         command.setWorkDirectory(path);
@@ -58,6 +62,13 @@ public class HaxeSdkUtil {
         File compilerFolder = new File(folderPath, COMPILER_FOLDER);
         File compilerFile = new File(compilerFolder, COMPILER_NAME);
         return compilerFile.getPath();
+    }
+
+    public static String getVMPathByFolderPath(String folderPath) {
+        //TODO make for other OS
+        File vmFolder = new File(folderPath, NEKO_FOLDER);
+        File vmFile = new File(vmFolder, NEKO_NAME);
+        return vmFile.getPath();
     }
 
     private static boolean checkFolderExists(String path) {
