@@ -7,6 +7,7 @@ import com.intellij.execution.process.CapturingProcessHandler;
 import com.intellij.execution.process.ProcessOutput;
 import com.intellij.openapi.compiler.CompileContext;
 import com.intellij.openapi.compiler.CompilerMessageCategory;
+import com.intellij.openapi.module.Module;
 import com.intellij.plugins.haxe.config.sdk.HaxeSdkData;
 import com.intellij.plugins.haxe.config.sdk.HaxeSdkUtil;
 import com.intellij.plugins.haxe.runner.HaxeApplicationConfiguration;
@@ -18,6 +19,7 @@ public class MakeHaxeCompile extends HaxeCompilerBase {
     @Override
     protected void compileImpl(CompileContext context, HaxeSdkData sdkData, HaxeApplicationConfiguration applicationConfiguration) {
         final String homePath = sdkData.getHomePath();
+        final Module module = applicationConfiguration.getConfigurationModule().getModule();
 
         GeneralCommandLine commandLine = new GeneralCommandLine();
 
@@ -26,8 +28,11 @@ public class MakeHaxeCompile extends HaxeCompilerBase {
         commandLine.addParameter("-main");
         commandLine.addParameter(CompilationUtil.getClassNameByPath(applicationConfiguration.getMainClass()));
 
+        commandLine.addParameter("-neko");
+        commandLine.addParameter(CompilationUtil.getNekoBinPathForModule(module));
+
         commandLine.addParameter("-cp");
-        String sourceFolderPath = CompilationUtil.getSourceFolderByModule(applicationConfiguration.getConfigurationModule().getModule());
+        String sourceFolderPath = CompilationUtil.getSourceFolderByModule(module);
         commandLine.addParameter(CompilerUtil.quotePath(sourceFolderPath));
 
         ProcessOutput output = null;
