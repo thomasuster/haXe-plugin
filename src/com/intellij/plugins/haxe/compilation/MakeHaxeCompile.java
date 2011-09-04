@@ -10,6 +10,7 @@ import com.intellij.openapi.compiler.CompilerMessageCategory;
 import com.intellij.plugins.haxe.config.sdk.HaxeSdkData;
 import com.intellij.plugins.haxe.config.sdk.HaxeSdkUtil;
 import com.intellij.plugins.haxe.runner.HaxeApplicationConfiguration;
+import com.intellij.plugins.haxe.util.CompilationUtil;
 
 import java.nio.charset.Charset;
 
@@ -23,10 +24,10 @@ public class MakeHaxeCompile extends HaxeCompilerBase {
         commandLine.setExePath(HaxeSdkUtil.getCompilerPathByFolderPath(homePath));
 
         commandLine.addParameter("-main");
-        commandLine.addParameter(getMainClassNameByPath(applicationConfiguration.getMainClass()));
+        commandLine.addParameter(CompilationUtil.getClassNameByPath(applicationConfiguration.getMainClass()));
 
         commandLine.addParameter("-cp");
-        String sourceFolderPath = getSourceFolderByModule(applicationConfiguration.getConfigurationModule().getModule());
+        String sourceFolderPath = CompilationUtil.getSourceFolderByModule(applicationConfiguration.getConfigurationModule().getModule());
         commandLine.addParameter(CompilerUtil.quotePath(sourceFolderPath));
 
         ProcessOutput output = null;

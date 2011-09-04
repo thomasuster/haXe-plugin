@@ -12,16 +12,12 @@ import com.intellij.openapi.projectRoots.Sdk;
 import com.intellij.openapi.roots.ModuleRootManager;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.plugins.haxe.HaxeBundle;
-import com.intellij.plugins.haxe.HaxeFileType;
 import com.intellij.plugins.haxe.config.sdk.HaxeSdkData;
 import com.intellij.plugins.haxe.config.sdk.HaxeSdkType;
 import com.intellij.plugins.haxe.runner.HaxeApplicationConfiguration;
 import com.intellij.plugins.haxe.runner.HaxeRunConfigurationType;
 import com.intellij.util.Chunk;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public abstract class HaxeCompilerBase implements TranslatingCompiler {
     private static final Logger LOG = Logger.getInstance("#com.intellij.plugins.haxe.compilation.HaxeCompilerBase");
@@ -66,20 +62,5 @@ public abstract class HaxeCompilerBase implements TranslatingCompiler {
             return (HaxeApplicationConfiguration) configurations[0];
         }
         return null;
-    }
-
-    protected String getMainClassNameByPath(String path) {
-        Pattern pattern = Pattern.compile("\\.*([\\w\\d]+)\\." + HaxeFileType.DEFAULT_EXTENSION);
-        Matcher matcher = pattern.matcher(path);
-        if (matcher.find()) {
-            return matcher.group(1);
-        }
-        return "";
-    }
-
-    protected String getSourceFolderByModule(Module module) {
-        VirtualFile moduleDir = module.getModuleFile().getParent();
-        VirtualFile sourceDir = moduleDir.findChild("src");
-        return sourceDir.getPath();
     }
 }
