@@ -14,6 +14,7 @@ import java.util.regex.Pattern;
 public class HaxeSdkUtil {
     private static final Logger LOG = Logger.getInstance("#com.intellij.plugins.haxe.config.sdk.HaxeSdkUtil");
     private static final Pattern VERSION_MATCHER = Pattern.compile("(\\d+(\\.\\d+)+)");
+    public final static String COMPILER_FOLDER = "haxe";
     public final static String COMPILER_NAME = "haxe.exe";
 
     public static HaxeSdkData testHaxeSdk(String path) {
@@ -53,7 +54,10 @@ public class HaxeSdkUtil {
     }
 
     public static String getCompilerPathByFolderPath(String folderPath) {
-        return folderPath + "/" + COMPILER_NAME;
+        //TODO make for other OS
+        File compilerFolder = new File(folderPath, COMPILER_FOLDER);
+        File compilerFile = new File(compilerFolder, COMPILER_NAME);
+        return compilerFile.getPath();
     }
 
     private static boolean checkFolderExists(String path) {
