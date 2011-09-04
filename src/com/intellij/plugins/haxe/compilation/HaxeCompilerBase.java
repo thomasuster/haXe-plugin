@@ -13,7 +13,7 @@ import com.intellij.openapi.roots.ModuleRootManager;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.plugins.haxe.HaxeBundle;
 import com.intellij.plugins.haxe.config.sdk.HaxeSdkData;
-import com.intellij.plugins.haxe.config.sdk.HaxeSdkType;
+import com.intellij.plugins.haxe.config.sdk.HaxeSdkUtil;
 import com.intellij.plugins.haxe.runner.HaxeApplicationConfiguration;
 import com.intellij.plugins.haxe.runner.HaxeRunConfigurationType;
 import com.intellij.util.Chunk;
@@ -36,9 +36,8 @@ public abstract class HaxeCompilerBase implements TranslatingCompiler {
     }
 
     public void compile(CompileContext context, Chunk<Module> moduleChunk, VirtualFile[] files, OutputSink sink) {
-        final Sdk jdk = getJdk(moduleChunk);
-        final HaxeSdkType sdkType = (HaxeSdkType) jdk.getSdkType();
-        final HaxeSdkData sdkData = sdkType.getSdkData();
+        final Sdk sdk = getSdk(moduleChunk);
+        final HaxeSdkData sdkData = HaxeSdkUtil.testHaxeSdk(sdk.getHomePath());
 
         HaxeApplicationConfiguration applicationConfiguration = getApplicationConfiguration(context.getProject());
 
@@ -50,7 +49,7 @@ public abstract class HaxeCompilerBase implements TranslatingCompiler {
     /**
      * @return the jdk. Assumes that the jdk is the same for all modules
      */
-    private Sdk getJdk(Chunk<Module> moduleChunk) {
+    private Sdk getSdk(Chunk<Module> moduleChunk) {
         final Module module = moduleChunk.getNodes().iterator().next();
         return ModuleRootManager.getInstance(module).getSdk();
     }
