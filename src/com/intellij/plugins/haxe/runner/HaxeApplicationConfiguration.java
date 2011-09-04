@@ -10,7 +10,11 @@ import com.intellij.openapi.module.Module;
 import com.intellij.openapi.module.ModuleManager;
 import com.intellij.openapi.options.SettingsEditor;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.util.InvalidDataException;
+import com.intellij.openapi.util.WriteExternalException;
 import com.intellij.plugins.haxe.runner.ui.HaxeRunConfigurationEditorForm;
+import com.intellij.util.xmlb.XmlSerializer;
+import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
@@ -48,5 +52,17 @@ public class HaxeApplicationConfiguration extends ModuleBasedConfiguration<HaxeA
 
     public RunProfileState getState(@NotNull Executor executor, @NotNull ExecutionEnvironment env) throws ExecutionException {
         return new HaxeRunningState(env, getConfigurationModule().getModule());
+    }
+
+    public void writeExternal(final Element element) throws WriteExternalException {
+        super.writeExternal(element);
+        writeModule(element);
+        XmlSerializer.serializeInto(this, element);
+    }
+
+    public void readExternal(final Element element) throws InvalidDataException {
+        super.readExternal(element);
+        readModule(element);
+        XmlSerializer.deserializeInto(this, element);
     }
 }
