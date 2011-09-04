@@ -9,7 +9,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class CompilationUtil {
-    public static final String NEKO_BIN_EXTENSION  = ".n";
+    public static final String NEKO_BIN_EXTENSION = ".n";
 
     public static String getClassNameByPath(String path) {
         Pattern pattern = Pattern.compile("\\.*([\\w\\d]+)\\." + HaxeFileType.DEFAULT_EXTENSION);
