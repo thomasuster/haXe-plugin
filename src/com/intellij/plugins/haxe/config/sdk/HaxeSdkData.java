@@ -10,6 +10,9 @@ public class HaxeSdkData implements SdkAdditionalData, PersistentStateComponent<
     private String homePath = "";
     private String version = "";
 
+    public HaxeSdkData() {
+    }
+
     public HaxeSdkData(String homePath, String version) {
         this.homePath = homePath;
         this.version = version;
