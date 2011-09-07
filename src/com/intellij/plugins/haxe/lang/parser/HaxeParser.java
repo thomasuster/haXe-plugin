@@ -21,14 +21,10 @@ public class HaxeParser implements PsiParser {
 
         ParserUtils.skipNLS(builder);
 
-        if (ParserUtils.lookAhead(builder, HaxeElementTypes.kPACKAGE)) {
-            PackageDeclaration.parse(builder);
-        }
-
+        PackageDeclaration.parse(builder);
         ParserUtils.skipNLS(builder);
 
-        while (ParserUtils.lookAhead(builder, HaxeElementTypes.kIMPORT)) {
-            ImportDeclaration.parse(builder, this);
+        while (ImportDeclaration.parse(builder, this)) {
             ParserUtils.skipNLS(builder);
         }
 

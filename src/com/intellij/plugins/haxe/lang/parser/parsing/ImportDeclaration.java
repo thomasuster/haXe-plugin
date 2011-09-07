@@ -20,49 +20,13 @@ public class ImportDeclaration implements HaxeElementTypes {
         }
 
         ParserUtils.skipNLS(builder);
+        String packagePath = PackagePathDeclaration.parse(builder);
 
-        parseImportStatement(builder, parser);
+        if(packagePath != null) {
+            parser.setKnownPackage(packagePath);
+        }
 
         marker.done(IMPORT_DECLARATION);
-        return true;
-    }
-
-    private static boolean parseImportStatement(PsiBuilder builder, HaxeParser parser) {
-        boolean parsed = false;
-        PsiBuilder.Marker importPathMarker = builder.mark();
-
-        String tokenText = builder.getTokenText();
-        if (!ParserUtils.getToken(builder, mIDENT)) {
-            importPathMarker.rollbackTo();
-            builder.error(HaxeBundle.message("import.path.expected"));
-        }
-
-        String packagePath = tokenText;
-
-        while (builder.getTokenType() == oDOT) {
-            packagePath += builder.getTokenText();
-            builder.advanceLexer();
-            if (builder.getTokenType() != mIDENT) {
-                importPathMarker.rollbackTo();
-                builder.error(HaxeBundle.message("import.path.expected"));
-                break;
-            }
-            packagePath += builder.getTokenText();
-            builder.advanceLexer();
-        }
-
-        if (builder.getTokenType() != oSEMI && builder.getTokenType() != wsNLS) {
-            builder.error(HaxeBundle.message("semicolon.or.newline.expected"));
-        } else {
-            parsed = true;
-            builder.advanceLexer();
-        }
-
-        if (parsed) {
-            parser.setKnownPackage(packagePath);
-            importPathMarker.done(IMPORT_PATH);
-        }
-
-        return parsed;
+        return packagePath != null;
     }
 }
