@@ -3,6 +3,7 @@ package com.intellij.plugins.haxe.lang.parser;
 import com.intellij.lang.ASTNode;
 import com.intellij.lang.PsiBuilder;
 import com.intellij.lang.PsiParser;
+import com.intellij.plugins.haxe.lang.parser.parsing.ClassDeclaration;
 import com.intellij.plugins.haxe.lang.parser.parsing.ImportDeclaration;
 import com.intellij.plugins.haxe.lang.parser.parsing.PackageDeclaration;
 import com.intellij.plugins.haxe.lang.parser.util.ParserUtils;
@@ -27,6 +28,8 @@ public class HaxeParser implements PsiParser {
         while (ImportDeclaration.parse(builder, this)) {
             ParserUtils.skipNLS(builder);
         }
+
+        ClassDeclaration.parse(builder, this);
 
         while (!builder.eof()) {
             builder.advanceLexer();
