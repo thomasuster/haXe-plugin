@@ -80,7 +80,7 @@ public class HaxeSyntaxHighlighter extends SyntaxHighlighterBase implements Haxe
         fillMap(ATTRIBUTES, STRINGS, STRING);
         fillMap(ATTRIBUTES, TokenSet.create(pLPAREN, pRPAREN), BRACKET);
         fillMap(ATTRIBUTES, TokenSet.create(pLBRACK, pRBRACK), BRACKET);
-        fillMap(ATTRIBUTES, TokenSet.create(pLCURCLY, pRCURLY), BRACKET);
+        fillMap(ATTRIBUTES, TokenSet.create(pLCURLY, pRCURLY), BRACKET);
         fillMap(ATTRIBUTES, OPERATORS, OPERATOR);
         fillMap(ATTRIBUTES, IDENTIFIERS, IDENTIFIER);
         fillMap(ATTRIBUTES, BAD_TOKENS, CodeInsightColors.ERRORS_ATTRIBUTES);

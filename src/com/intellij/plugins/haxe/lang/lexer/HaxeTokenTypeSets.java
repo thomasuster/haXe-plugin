@@ -50,7 +50,7 @@ public interface HaxeTokenTypeSets {
             pRBRACK,
             pLPAREN,
             pRPAREN,
-            pLCURCLY,
+            pLCURLY,
             pRCURLY
     );
 

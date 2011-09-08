@@ -52,7 +52,7 @@ public interface HaxeTokenTypes {
 
     IElementType mIDENT = new HaxeElementTypeImpl("IDENTIFIER");
 
-    IElementType pLCURCLY = new HaxeElementTypeImpl("{");
+    IElementType pLCURLY = new HaxeElementTypeImpl("{");
     IElementType pRCURLY = new HaxeElementTypeImpl("}");
     IElementType pLBRACK = new HaxeElementTypeImpl("[");
     IElementType pRBRACK = new HaxeElementTypeImpl("]");

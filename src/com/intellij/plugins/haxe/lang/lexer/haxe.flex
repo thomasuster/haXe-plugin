@@ -116,7 +116,7 @@ mIDENT = {mLETTER} ({mLETTER} | {mDIGIT} )*
 
 "`" [^`]* "`"                             { return litSTRING; }
 "\"" ("\\\"" | [^\"])* "\""               { return litSTRING; }
-"{"                                       { return pLCURCLY; }
+"{"                                       { return pLCURLY; }
 "}"                                       { return pRCURLY; }
 
 "["                                       { return pLBRACK; }

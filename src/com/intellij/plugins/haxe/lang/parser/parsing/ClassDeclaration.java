@@ -50,7 +50,7 @@ public class ClassDeclaration implements HaxeElementTypes {
         }
 
         ParserUtils.skipNLS(builder);
-        ParserUtils.getToken(builder, pLCURCLY, HaxeBundle.message("declaration.expected"));
+        ParserUtils.getToken(builder, pLCURLY, HaxeBundle.message("declaration.expected"));
 
         //TODO
 
