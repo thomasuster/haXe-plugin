@@ -1,7 +1,6 @@
 package com.intellij.plugins.haxe.lang.parser.parsing;
 
 import com.intellij.lang.PsiBuilder;
-import com.intellij.plugins.haxe.HaxeBundle;
 import com.intellij.plugins.haxe.lang.parser.HaxeElementTypes;
 import com.intellij.plugins.haxe.lang.parser.HaxeParser;
 import com.intellij.plugins.haxe.lang.parser.util.ParserUtils;
@@ -22,7 +21,7 @@ public class ImportDeclaration implements HaxeElementTypes {
         ParserUtils.skipNLS(builder);
         String packagePath = PackagePathDeclaration.parse(builder);
 
-        if(packagePath != null) {
+        if (packagePath != null) {
             parser.setKnownPackage(packagePath);
         }
 
