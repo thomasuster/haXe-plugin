@@ -1,7 +1,6 @@
 package com.intellij.plugins.haxe.lang.parser.parsing.declarations;
 
 import com.intellij.lang.PsiBuilder;
-import com.intellij.plugins.haxe.HaxeBundle;
 import com.intellij.plugins.haxe.lang.parser.HaxeElementTypes;
 import com.intellij.plugins.haxe.lang.parser.HaxeParser;
 import com.intellij.plugins.haxe.lang.parser.util.ParserUtils;
@@ -15,29 +14,10 @@ public class VarOrConstDeclaration implements HaxeElementTypes {
             return false;
         }
 
-        ParserUtils.skipNLS(builder);
-
-        PsiBuilder.Marker nameMarker = builder.mark();
-        if (!ParserUtils.getToken(builder, mIDENT, HaxeBundle.message("identifier.expected"))) {
+        if (!TypedVariableDeclaration.parse(builder, parser)) {
             varConstMarker.rollbackTo();
             return false;
         }
-        nameMarker.done(VAR_CONST_NAME);
-
-        ParserUtils.skipNLS(builder);
-        if (!ParserUtils.getToken(builder, oCOLON, HaxeBundle.message("type.expected"))) {
-            varConstMarker.rollbackTo();
-            return false;
-        }
-
-        ParserUtils.skipNLS(builder);
-
-        PsiBuilder.Marker typeMarker = builder.mark();
-        if (!ParserUtils.getToken(builder, mIDENT, HaxeBundle.message("type.expected"))) {
-            varConstMarker.rollbackTo();
-            return false;
-        }
-        typeMarker.done(TYPE);
 
         varConstMarker.done(VAR_CONST_DECLARATION);
 
