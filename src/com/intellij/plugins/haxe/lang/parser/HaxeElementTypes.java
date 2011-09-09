@@ -8,6 +8,7 @@ public interface HaxeElementTypes extends HaxeTokenTypes {
     HaxeElementType PACKAGE_DECLARATION = new HaxeElementTypeImpl("PackageDeclaration");
     HaxeElementType IMPORT_DECLARATION = new HaxeElementTypeImpl("ImportDeclaration");
     HaxeElementType CLASS_DECLARATION = new HaxeElementTypeImpl("ClassDeclaration");
+    HaxeElementType FUNCTION_DECLARATION = new HaxeElementTypeImpl("FunctionDeclaration");
     HaxeElementType PACKAGE_PATH = new HaxeElementTypeImpl("PackagePath");
     HaxeElementType ACCESS_MODIFIER = new HaxeElementTypeImpl("AccessModifier");
     HaxeElementType ATTRIBUTE_MODIFIER = new HaxeElementTypeImpl("AttributeModifier");

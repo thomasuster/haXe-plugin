@@ -3,10 +3,8 @@ package com.intellij.plugins.haxe.lang.parser;
 import com.intellij.lang.ASTNode;
 import com.intellij.lang.PsiBuilder;
 import com.intellij.lang.PsiParser;
-import com.intellij.plugins.haxe.lang.parser.parsing.declarations.ClassDeclaration;
-import com.intellij.plugins.haxe.lang.parser.parsing.declarations.ImportDeclaration;
-import com.intellij.plugins.haxe.lang.parser.parsing.declarations.PackageDeclaration;
-import com.intellij.plugins.haxe.lang.parser.parsing.declarations.VarOrConstDeclaration;
+import com.intellij.plugins.haxe.HaxeBundle;
+import com.intellij.plugins.haxe.lang.parser.parsing.declarations.*;
 import com.intellij.plugins.haxe.lang.parser.util.ParserUtils;
 import com.intellij.psi.tree.IElementType;
 import org.jetbrains.annotations.NotNull;
@@ -46,5 +44,18 @@ public class HaxeParser implements PsiParser {
 
     public void parseVarOrConst(PsiBuilder builder) {
         VarOrConstDeclaration.parse(builder, this);
+    }
+
+    public void parseFunction(PsiBuilder builder, boolean classMember) {
+        FunctionDeclaration.parse(builder, this, classMember);
+    }
+
+    public void parseScope(PsiBuilder builder) {
+        //TODO
+        ParserUtils.skipNLS(builder);
+        ParserUtils.getToken(builder, HaxeElementTypes.pLCURLY, HaxeBundle.message("declaration.expected"));
+
+        ParserUtils.skipNLS(builder);
+        ParserUtils.getToken(builder, HaxeElementTypes.pRCURLY, HaxeBundle.message("declaration.expected"));
     }
 }

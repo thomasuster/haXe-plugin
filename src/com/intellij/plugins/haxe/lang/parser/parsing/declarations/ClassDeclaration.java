@@ -53,6 +53,7 @@ public class ClassDeclaration implements HaxeElementTypes {
         ParserUtils.skipNLS(builder);
         ParserUtils.getToken(builder, pLCURLY, HaxeBundle.message("declaration.expected"));
 
+        ParserUtils.skipNLS(builder);
         while (builder.getTokenType() != pRCURLY) {
             PsiBuilder.Marker declarationMarker = builder.mark();
 
@@ -61,12 +62,14 @@ public class ClassDeclaration implements HaxeElementTypes {
 
             if (builder.getTokenType() == kVAR || builder.getTokenType() == kCONST) {
                 parser.parseVarOrConst(builder);
-                declarationMarker.drop();
+            } else if (builder.getTokenType() == kFUNCTION) {
+                parser.parseFunction(builder, true);
             } else {
-                //TODO function declaration
                 declarationMarker.rollbackTo();
                 break;
             }
+            declarationMarker.drop();
+            ParserUtils.skipNLS(builder);
         }
 
         ParserUtils.skipNLS(builder);
