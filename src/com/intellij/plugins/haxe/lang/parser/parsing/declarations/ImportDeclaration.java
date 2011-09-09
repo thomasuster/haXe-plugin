@@ -1,4 +1,4 @@
-package com.intellij.plugins.haxe.lang.parser.parsing;
+package com.intellij.plugins.haxe.lang.parser.parsing.declarations;
 
 import com.intellij.lang.PsiBuilder;
 import com.intellij.plugins.haxe.lang.parser.HaxeElementTypes;
