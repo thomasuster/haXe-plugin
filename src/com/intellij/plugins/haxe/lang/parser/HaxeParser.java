@@ -6,6 +6,7 @@ import com.intellij.lang.PsiParser;
 import com.intellij.plugins.haxe.lang.parser.parsing.declarations.ClassDeclaration;
 import com.intellij.plugins.haxe.lang.parser.parsing.declarations.ImportDeclaration;
 import com.intellij.plugins.haxe.lang.parser.parsing.declarations.PackageDeclaration;
+import com.intellij.plugins.haxe.lang.parser.parsing.declarations.VarOrConstDeclaration;
 import com.intellij.plugins.haxe.lang.parser.util.ParserUtils;
 import com.intellij.psi.tree.IElementType;
 import org.jetbrains.annotations.NotNull;
@@ -41,5 +42,9 @@ public class HaxeParser implements PsiParser {
 
     public void setKnownPackage(String packageName) {
         packageNames.add(packageName);
+    }
+
+    public void parseVarOrConst(PsiBuilder builder) {
+        VarOrConstDeclaration.parse(builder, this);
     }
 }

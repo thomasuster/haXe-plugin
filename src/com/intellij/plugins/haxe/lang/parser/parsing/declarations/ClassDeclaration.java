@@ -4,6 +4,7 @@ import com.intellij.lang.PsiBuilder;
 import com.intellij.plugins.haxe.HaxeBundle;
 import com.intellij.plugins.haxe.lang.parser.HaxeElementTypes;
 import com.intellij.plugins.haxe.lang.parser.HaxeParser;
+import com.intellij.plugins.haxe.lang.parser.parsing.Modifiers;
 import com.intellij.plugins.haxe.lang.parser.util.ParserUtils;
 import com.intellij.psi.tree.TokenSet;
 
@@ -52,9 +53,24 @@ public class ClassDeclaration implements HaxeElementTypes {
         ParserUtils.skipNLS(builder);
         ParserUtils.getToken(builder, pLCURLY, HaxeBundle.message("declaration.expected"));
 
-        //TODO
+        while (builder.getTokenType() != pRCURLY) {
+            PsiBuilder.Marker declarationMarker = builder.mark();
+
+            ParserUtils.skipNLS(builder);
+            Modifiers.parse(builder, parser);
+
+            if (builder.getTokenType() == kVAR || builder.getTokenType() == kCONST) {
+                parser.parseVarOrConst(builder);
+                declarationMarker.drop();
+            } else {
+                //TODO function declaration
+                declarationMarker.rollbackTo();
+                break;
+            }
+        }
 
         ParserUtils.skipNLS(builder);
+        ParserUtils.getToken(builder, pRCURLY, HaxeBundle.message("declaration.end.expected"));
 
         marker.done(CLASS_DECLARATION);
 
