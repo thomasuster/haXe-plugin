@@ -6,6 +6,7 @@ import com.intellij.plugins.haxe.lang.parser.HaxeElementTypes;
 import com.intellij.plugins.haxe.lang.parser.HaxeParser;
 import com.intellij.plugins.haxe.lang.parser.parsing.declarations.VarOrConstDeclaration;
 import com.intellij.plugins.haxe.lang.parser.parsing.expressions.CallExpression;
+import com.intellij.plugins.haxe.lang.parser.parsing.expressions.Expressions;
 import com.intellij.plugins.haxe.lang.parser.util.ParserUtils;
 
 public class Statements implements HaxeElementTypes {
@@ -27,7 +28,12 @@ public class Statements implements HaxeElementTypes {
             return true;
         }
 
-        return parseCallStatement(builder, parser);
+        if (!Expressions.parse(builder, parser)) {
+            return false;
+        }
+
+        ParserUtils.skipNLS(builder);
+        return ParserUtils.getToken(builder, oSEMI, HaxeBundle.message("semicolon.expected"));
     }
 
     private static boolean parseCallStatement(PsiBuilder builder, HaxeParser parser) {
