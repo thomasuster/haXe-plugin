@@ -13,8 +13,12 @@ public class Statements implements HaxeElementTypes {
     public static boolean parse(PsiBuilder builder, HaxeParser parser) {
         if (builder.getTokenType() == kVAR || builder.getTokenType() == kCONST) {
             return VarOrConstDeclaration.parse(builder, parser);
+        } else if (builder.getTokenType() == pLCURLY) {
+            return BlockStatement.parse(builder, parser);
         } else if (builder.getTokenType() == kRETURN) {
             return parseReturnStatement(builder, parser);
+        } else if (builder.getTokenType() == kIF) {
+            return IfStatement.parse(builder, parser);
         } else {
             return parseCallStatement(builder, parser);
         }
