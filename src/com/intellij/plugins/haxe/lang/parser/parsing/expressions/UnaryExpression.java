@@ -16,9 +16,8 @@ public class UnaryExpression implements HaxeElementTypes {
         } else if (HaxeTokenTypeSets.LITERALS.contains(builder.getTokenType())) {
             return parseLiteral(builder);
         } else {
-            //TODO
+            return CallExpression.parse(builder, parser);
         }
-        return true;
     }
 
     public static boolean parseCreation(PsiBuilder builder, HaxeParser parser) {
