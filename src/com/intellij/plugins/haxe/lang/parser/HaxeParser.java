@@ -50,7 +50,7 @@ public class HaxeParser implements PsiParser {
         FunctionDeclaration.parse(builder, this, classMember);
     }
 
-    public void parseScope(PsiBuilder builder) {
+    public void parseBlock(PsiBuilder builder) {
         //TODO
         ParserUtils.skipNLS(builder);
         ParserUtils.getToken(builder, HaxeElementTypes.pLCURLY, HaxeBundle.message("declaration.expected"));

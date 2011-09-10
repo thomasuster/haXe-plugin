@@ -33,7 +33,7 @@ public class FunctionDeclaration implements HaxeElementTypes {
 
         marker.done(FUNCTION_DECLARATION);
 
-        parser.parseScope(builder);
+        parser.parseBlock(builder);
 
         return true;
     }
