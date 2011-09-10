@@ -25,7 +25,7 @@ public class ParametersList implements HaxeElementTypes {
             }
 
             ParserUtils.skipNLS(builder);
-            if (!Expressions.parse(builder, parser)) {
+            if (!Expressions.parse(builder, parser, true)) {
                 return false;
             }
 

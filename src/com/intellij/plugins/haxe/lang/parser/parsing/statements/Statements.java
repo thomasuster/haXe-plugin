@@ -32,7 +32,7 @@ public class Statements implements HaxeElementTypes {
             return true;
         }
 
-        if (!Expressions.parse(builder, parser)) {
+        if (!Expressions.parse(builder, parser, false)) {
             return false;
         }
 

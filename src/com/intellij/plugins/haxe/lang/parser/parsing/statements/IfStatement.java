@@ -19,7 +19,7 @@ public class IfStatement implements HaxeElementTypes {
             return false;
         }
 
-        if (!Expressions.parse(builder, parser)) {
+        if (!Expressions.parse(builder, parser, true)) {
             return false;
         }
 

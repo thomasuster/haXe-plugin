@@ -5,7 +5,7 @@ import com.intellij.plugins.haxe.lang.parser.HaxeElementTypes;
 import com.intellij.plugins.haxe.lang.parser.HaxeParser;
 
 public class Expressions implements HaxeElementTypes {
-    public static boolean parse(PsiBuilder builder, HaxeParser parser) {
-        return BinaryExpression.parse(builder, parser);
+    public static boolean parse(PsiBuilder builder, HaxeParser parser, boolean inCondition) {
+        return BinaryExpression.parse(builder, parser, inCondition);
     }
 }

@@ -41,7 +41,7 @@ public class CallExpression implements HaxeElementTypes {
         }
 
         ParserUtils.skipNLS(builder);
-        if (!Expressions.parse(builder, parser)) {
+        if (!Expressions.parse(builder, parser, false)) {
             return false;
         }
 

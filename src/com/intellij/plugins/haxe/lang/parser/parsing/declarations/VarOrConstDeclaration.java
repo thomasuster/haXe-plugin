@@ -26,7 +26,7 @@ public class VarOrConstDeclaration implements HaxeElementTypes {
         ParserUtils.skipNLS(builder);
         if (ParserUtils.lookAhead(builder, oASSIGN)) {
             builder.advanceLexer();
-            if (!Expressions.parse(builder, parser)) {
+            if (!Expressions.parse(builder, parser, false)) {
                 return false;
             }
         }
