@@ -5,6 +5,7 @@ import com.intellij.lang.PsiBuilder;
 import com.intellij.lang.PsiParser;
 import com.intellij.plugins.haxe.lang.parser.parsing.declarations.*;
 import com.intellij.plugins.haxe.lang.parser.parsing.statements.BlockStatement;
+import com.intellij.plugins.haxe.lang.parser.parsing.statements.Statements;
 import com.intellij.plugins.haxe.lang.parser.util.ParserUtils;
 import com.intellij.psi.tree.IElementType;
 import org.jetbrains.annotations.NotNull;
@@ -55,7 +56,6 @@ public class HaxeParser implements PsiParser {
     }
 
     public boolean parseStatement(PsiBuilder builder) {
-        //TODO
-        return false;
+        return Statements.parse(builder, this);
     }
 }
