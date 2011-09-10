@@ -32,7 +32,7 @@ public class TypedVariableDeclaration implements HaxeElementTypes {
             return false;
         }
 
-        nameMarker.done(VAR_CONST_NAME);
+        nameMarker.done(VAR_FUNCTION_NAME);
 
         return parseTypeAssign(builder, parser);
     }

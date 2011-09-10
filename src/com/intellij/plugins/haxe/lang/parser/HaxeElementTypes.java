@@ -12,7 +12,7 @@ public interface HaxeElementTypes extends HaxeTokenTypes {
     HaxeElementType PACKAGE_PATH = new HaxeElementTypeImpl("PackagePath");
     HaxeElementType ACCESS_MODIFIER = new HaxeElementTypeImpl("AccessModifier");
     HaxeElementType ATTRIBUTE_MODIFIER = new HaxeElementTypeImpl("AttributeModifier");
-    HaxeElementType VAR_CONST_NAME = new HaxeElementTypeImpl("VarConstName");
+    HaxeElementType VAR_FUNCTION_NAME = new HaxeElementTypeImpl("VarFunctionName");
     HaxeElementType VAR_CONST_DECLARATION = new HaxeElementTypeImpl("VarConstDeclaration");
     HaxeElementType TYPE = new HaxeElementTypeImpl("Type");
     HaxeElementType BLOCK_STATEMENT = new HaxeElementTypeImpl("BlockStatement");
