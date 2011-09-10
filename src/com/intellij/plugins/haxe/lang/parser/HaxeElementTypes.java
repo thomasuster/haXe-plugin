@@ -16,4 +16,7 @@ public interface HaxeElementTypes extends HaxeTokenTypes {
     HaxeElementType VAR_CONST_DECLARATION = new HaxeElementTypeImpl("VarConstDeclaration");
     HaxeElementType TYPE = new HaxeElementTypeImpl("Type");
     HaxeElementType BLOCK_STATEMENT = new HaxeElementTypeImpl("BlockStatement");
+    HaxeElementType LITERAL = new HaxeElementTypeImpl("Literal");
+    HaxeElementType EXPRESSION = new HaxeElementTypeImpl("Expression");
+    HaxeElementType INSTANTIATION = new HaxeElementTypeImpl("Instantiation ");
 }
