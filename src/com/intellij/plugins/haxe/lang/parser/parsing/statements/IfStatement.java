@@ -28,6 +28,14 @@ public class IfStatement implements HaxeElementTypes {
             return false;
         }
 
-        return parser.parseStatement(builder);
+        if (!parser.parseStatement(builder)) {
+            return false;
+        }
+
+        if (ParserUtils.getToken(builder, kELSE)) {
+            return parser.parseStatement(builder);
+        }
+
+        return true;
     }
 }
