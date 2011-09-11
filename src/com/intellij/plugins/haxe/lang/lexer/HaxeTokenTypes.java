@@ -13,8 +13,6 @@ public interface HaxeTokenTypes {
     IElementType litINT = new HaxeElementTypeImpl("LITERAL_INT");
     IElementType litHEX = new HaxeElementTypeImpl("LITERAL_HEX");
     IElementType litFLOAT = new HaxeElementTypeImpl("LITERAL_FLOAT");
-    IElementType litFLOAT_I = new HaxeElementTypeImpl("LITERAL_IMAGINARY_FLOAT");
-    IElementType litDECIMAL_I = new HaxeElementTypeImpl("LITERAL_IMAGINARY_INTEGER");
 
     IElementType kBREAK = new HaxeElementTypeImpl("KEYWORD_BREAK");
     IElementType kDEFAULT = new HaxeElementTypeImpl("KEYWORD_DEFAULT");
@@ -39,6 +37,8 @@ public interface HaxeTokenTypes {
 
     IElementType kIF = new HaxeElementTypeImpl("KEYWORD_IF");
     IElementType kFOR = new HaxeElementTypeImpl("KEYWORD_FOR");
+    IElementType kDO = new HaxeElementTypeImpl("KEYWORD_DO");
+    IElementType kWHILE = new HaxeElementTypeImpl("KEYWORD_WHILE");
     IElementType kRETURN = new HaxeElementTypeImpl("KEYWORD_RETURN");
     IElementType kIMPORT = new HaxeElementTypeImpl("KEYWORD_IMPORT");
     IElementType kCONTINUE = new HaxeElementTypeImpl("KEYWORD_CONTINUE");

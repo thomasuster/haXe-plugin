@@ -198,6 +198,8 @@ mIDENT = {mLETTER} ({mLETTER} | {mDIGIT} )*
 
 "if"                                      {  return kIF ;  }
 "for"                                     {  return kFOR ;  }
+"do"                                      {  return kDO ;  }
+"while"                                   {  return kWHILE ;  }
 "return"                                  {  return kRETURN ;  }
 "import"                                  {  return kIMPORT ;  }
 "continue"                                {  return kCONTINUE ;  }
@@ -210,9 +212,7 @@ mIDENT = {mLETTER} ({mLETTER} | {mDIGIT} )*
 
 {mIDENT}                                  {  return mIDENT; }
 
-{mNUM_FLOAT}"i"                           {  return litFLOAT_I; }
 {mNUM_FLOAT}                              {  return litFLOAT; }
-{mDIGIT}+"i"                              {  return litDECIMAL_I; }
 {mNUM_OCT}                                {  return litOCT; }
 {mNUM_HEX}                                {  return litHEX; }
 {mNUM_INT}                                {  return litINT; }

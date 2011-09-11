@@ -24,9 +24,7 @@ public interface HaxeTokenTypeSets {
             litINT,
             litHEX,
             litOCT,
-            litFLOAT,
-            litDECIMAL_I,
-            litFLOAT_I
+            litFLOAT
     );
 
     static final TokenSet LINE_COMMENTS = TokenSet.create(
@@ -61,9 +59,7 @@ public interface HaxeTokenTypeSets {
             litSTRING,
             litINT,
             litHEX,
-            litOCT,
-            litDECIMAL_I,
-            litFLOAT_I
+            litOCT
     );
 
     public static final TokenSet KEYWORDS = TokenSet.create(
@@ -76,6 +72,8 @@ public interface HaxeTokenTypeSets {
             kDEFAULT,
             kELSE,
             kFOR,
+            kDO,
+            kWHILE,
             kFUNCTION,
             kIF,
             kIMPORT,
