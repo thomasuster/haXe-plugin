@@ -91,7 +91,7 @@ public interface HaxeTokenTypeSets {
     );
 
     public static final TokenSet UNARY_OPERATORS = TokenSet.create(
-            oMINUS, oPLUS, oNOT, oBIT_XOR, oMUL, oBIT_AND, oSEND_CHANNEL
+            oPLUS_PLUS, oMINUS_MINUS, oNOT
     );
 
     public static final TokenSet ASSIGN_OPERATORS = TokenSet.create(

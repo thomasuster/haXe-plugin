@@ -15,6 +15,8 @@ public class UnaryExpression implements HaxeElementTypes {
             return parseCreation(builder, parser);
         } else if (HaxeTokenTypeSets.LITERALS.contains(builder.getTokenType())) {
             return parseLiteral(builder);
+        } else if (HaxeTokenTypeSets.UNARY_OPERATORS.contains(builder.getTokenType())) {
+            return parseUnary(builder, parser);
         } else {
             return CallExpression.parse(builder, parser);
         }
@@ -45,5 +47,14 @@ public class UnaryExpression implements HaxeElementTypes {
         builder.advanceLexer();
         marker.done(LITERAL);
         return true;
+    }
+
+    private static boolean parseUnary(PsiBuilder builder, HaxeParser parser) {
+        do {
+            builder.advanceLexer();
+            ParserUtils.skipNLS(builder);
+        } while (HaxeTokenTypeSets.UNARY_OPERATORS.contains(builder.getTokenType()));
+
+        return CallExpression.parse(builder, parser);
     }
 }
