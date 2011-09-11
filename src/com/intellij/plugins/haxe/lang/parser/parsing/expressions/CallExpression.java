@@ -18,12 +18,13 @@ public class CallExpression implements HaxeElementTypes {
         }
         marker.done(VAR_FUNCTION_NAME);
 
-        if (ParserUtils.lookAhead(builder, pLBRACK)) {
-            if (!parseIndex(builder, parser)) {
+        if (ParserUtils.lookAhead(builder, pLPAREN)) {
+            if (!ParametersList.parse(builder, parser)) {
                 return false;
             }
-        } else if (ParserUtils.lookAhead(builder, pLPAREN)) {
-            if (!ParametersList.parse(builder, parser)) {
+        }
+        while (ParserUtils.lookAhead(builder, pLBRACK)) {
+            if (!parseIndex(builder, parser)) {
                 return false;
             }
         }
