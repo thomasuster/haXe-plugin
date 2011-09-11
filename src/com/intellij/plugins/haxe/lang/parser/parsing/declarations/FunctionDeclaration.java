@@ -22,27 +22,32 @@ public class FunctionDeclaration implements HaxeElementTypes {
             if (ParserUtils.getToken(builder, oNEW)) {
                 isConstructor = true;
             } else if (!ParserUtils.getToken(builder, mIDENT, HaxeBundle.message("identifier.expected"))) {
+                marker.drop();
                 return false;
             }
         }
 
         ParserUtils.skipNLS(builder);
         if (!ParserUtils.getToken(builder, pLPAREN, HaxeBundle.message("parameters.list.expected"))) {
+            marker.drop();
             return false;
         }
 
         ParserUtils.skipNLS(builder);
         if (!TypedVariableDeclaration.parseList(builder, parser)) {
+            marker.drop();
             return false;
         }
 
         ParserUtils.skipNLS(builder);
         if (!ParserUtils.getToken(builder, pRPAREN, HaxeBundle.message("parameters.list.expected"))) {
+            marker.drop();
             return false;
         }
 
         ParserUtils.skipNLS(builder);
         if (!isConstructor && !TypedVariableDeclaration.parseTypeAssign(builder, parser)) {
+            marker.drop();
             return false;
         }
 
