@@ -47,8 +47,15 @@ public class TypedVariableDeclaration implements HaxeElementTypes {
 
         PsiBuilder.Marker typeMarker = builder.mark();
         if (!ParserUtils.getToken(builder, mIDENT, HaxeBundle.message("type.expected"))) {
-            typeMarker.rollbackTo();
+            typeMarker.drop();
             return false;
+        }
+
+        if (ParserUtils.lookAhead(builder, oLESS)) {
+            if (!TemplateDeclaration.parse(builder, parser)) {
+                typeMarker.drop();
+                return false;
+            }
         }
         typeMarker.done(TYPE);
 
