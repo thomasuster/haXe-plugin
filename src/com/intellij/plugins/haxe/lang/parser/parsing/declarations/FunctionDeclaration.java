@@ -17,7 +17,10 @@ public class FunctionDeclaration implements HaxeElementTypes {
 
         if (classMember) {
             ParserUtils.skipNLS(builder);
-            ParserUtils.getToken(builder, mIDENT, HaxeBundle.message("identifier.expected"));
+            if (!ParserUtils.getToken(builder, oNEW) && !ParserUtils.getToken(builder, mIDENT)) {
+                builder.error(HaxeBundle.message("identifier.expected"));
+                return false;
+            }
         }
 
         ParserUtils.skipNLS(builder);
