@@ -43,21 +43,10 @@ public class TypedVariableDeclaration implements HaxeElementTypes {
             return false;
         }
 
-        ParserUtils.skipNLS(builder);
-
-        PsiBuilder.Marker typeMarker = builder.mark();
-        if (!ParserUtils.getToken(builder, mIDENT, HaxeBundle.message("type.expected"))) {
-            typeMarker.drop();
+        if (!TypeDeclaration.parse(builder, parser)) {
+            builder.error(HaxeBundle.message("type.expected"));
             return false;
         }
-
-        if (ParserUtils.lookAhead(builder, oLESS)) {
-            if (!TemplateDeclaration.parse(builder, parser)) {
-                typeMarker.drop();
-                return false;
-            }
-        }
-        typeMarker.done(TYPE);
 
         return true;
     }

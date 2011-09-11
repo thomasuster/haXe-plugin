@@ -17,7 +17,8 @@ public class TemplateDeclaration implements HaxeElementTypes {
         }
 
         ParserUtils.skipNLS(builder);
-        if (!ParserUtils.getToken(builder, mIDENT, HaxeBundle.message("type.expected"))) {
+        if (!TypeDeclaration.parse(builder, parser)) {
+            builder.error(HaxeBundle.message("type.expected"));
             marker.drop();
             return false;
         }
