@@ -15,24 +15,36 @@ public class FunctionDeclaration implements HaxeElementTypes {
             return false;
         }
 
+        boolean isConstructor = false;
         if (classMember) {
             ParserUtils.skipNLS(builder);
-            if (!ParserUtils.getToken(builder, oNEW) && !ParserUtils.getToken(builder, mIDENT)) {
-                builder.error(HaxeBundle.message("identifier.expected"));
+            //try constructor
+            if (ParserUtils.getToken(builder, oNEW)) {
+                isConstructor = true;
+            } else if (!ParserUtils.getToken(builder, mIDENT, HaxeBundle.message("identifier.expected"))) {
                 return false;
             }
         }
 
         ParserUtils.skipNLS(builder);
-        ParserUtils.getToken(builder, pLPAREN, HaxeBundle.message("parameters.list.expected"));
+        if (!ParserUtils.getToken(builder, pLPAREN, HaxeBundle.message("parameters.list.expected"))) {
+            return false;
+        }
 
         ParserUtils.skipNLS(builder);
-        TypedVariableDeclaration.parseList(builder, parser);
+        if (!TypedVariableDeclaration.parseList(builder, parser)) {
+            return false;
+        }
 
         ParserUtils.skipNLS(builder);
-        ParserUtils.getToken(builder, pRPAREN, HaxeBundle.message("parameters.list.expected"));
+        if (!ParserUtils.getToken(builder, pRPAREN, HaxeBundle.message("parameters.list.expected"))) {
+            return false;
+        }
 
-        TypedVariableDeclaration.parseTypeAssign(builder, parser);
+        ParserUtils.skipNLS(builder);
+        if (!isConstructor && !TypedVariableDeclaration.parseTypeAssign(builder, parser)) {
+            return false;
+        }
 
         marker.done(FUNCTION_DECLARATION);
 
