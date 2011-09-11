@@ -17,6 +17,9 @@ public class UnaryExpression implements HaxeElementTypes {
             return parseLiteral(builder);
         } else if (HaxeTokenTypeSets.UNARY_OPERATORS.contains(builder.getTokenType())) {
             return parseUnary(builder, parser);
+        }
+        if (builder.getTokenType() == pLBRACK) {
+            return ArrayExpression.parse(builder, parser);
         } else {
             return CallExpression.parse(builder, parser);
         }
