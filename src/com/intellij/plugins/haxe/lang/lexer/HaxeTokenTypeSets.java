@@ -53,7 +53,6 @@ public interface HaxeTokenTypeSets {
     );
 
     static final TokenSet LITERALS = TokenSet.create(
-            mIDENT,
             litCHAR,
             litFLOAT,
             litSTRING,
