@@ -19,6 +19,8 @@ public class Statements implements HaxeElementTypes {
             return parseReturnStatement(builder, parser);
         } else if (builder.getTokenType() == kIF) {
             return IfStatement.parse(builder, parser);
+        } else if (builder.getTokenType() == kWHILE) {
+            return WhileStatement.parse(builder, parser);
         } else {
             return parseCallStatement(builder, parser);
         }
