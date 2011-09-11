@@ -51,6 +51,14 @@ public class Statements implements HaxeElementTypes {
             return false;
         }
 
+        if (HaxeTokenTypeSets.ASSIGN_OPERATORS.contains(builder.getTokenType())) {
+            builder.advanceLexer();
+
+            if (!Expressions.parse(builder, parser, false)) {
+                return false;
+            }
+        }
+
         ParserUtils.skipNLS(builder);
         return ParserUtils.getToken(builder, oSEMI, HaxeBundle.message("semicolon.expected"));
     }
