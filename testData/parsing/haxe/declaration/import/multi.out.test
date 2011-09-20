@@ -1,0 +1,22 @@
+haXe File
+  ImportDeclaration
+    PsiElement(KEYWORD_IMPORT)('import')
+    PsiWhiteSpace(' ')
+    PackagePath
+      PsiElement(IDENTIFIER)('com')
+      PsiElement(.)('.')
+      PsiElement(IDENTIFIER)('fedor')
+      PsiElement(.)('.')
+      PsiElement(IDENTIFIER)('test1')
+      PsiElement(;)(';')
+  PsiElement(WS_NEW_LINES)('\n')
+  ImportDeclaration
+    PsiElement(KEYWORD_IMPORT)('import')
+    PsiWhiteSpace(' ')
+    PackagePath
+      PsiElement(IDENTIFIER)('com')
+      PsiElement(.)('.')
+      PsiElement(IDENTIFIER)('fedor')
+      PsiElement(.)('.')
+      PsiElement(IDENTIFIER)('test2')
+      PsiElement(;)(';')

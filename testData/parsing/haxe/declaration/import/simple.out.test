@@ -1,0 +1,12 @@
+haXe File
+  ImportDeclaration
+    PsiElement(KEYWORD_IMPORT)('import')
+    PsiWhiteSpace(' ')
+    PackagePath
+      PsiElement(IDENTIFIER)('com')
+      PsiElement(.)('.')
+      PsiElement(IDENTIFIER)('fedor')
+      PsiElement(.)('.')
+      PsiElement(IDENTIFIER)('test')
+      PsiErrorElement:Semicolon or newline expected
+        <empty list>
