@@ -16,4 +16,9 @@ public class HaxeFile extends PsiFileBase {
     public FileType getFileType() {
         return HaxeFileType.HAXE_FILE_TYPE;
     }
+
+    @Override
+    public String toString() {
+        return "haXe File";
+    }
 }
