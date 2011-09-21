@@ -3,7 +3,7 @@ package com.intellij.plugins.haxe.util;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class CompilationUtilTest extends Assert {
+public class CompilationUtilTestCase extends Assert {
 
     @Test
     public void doTestWindows() {
