@@ -1,0 +1,75 @@
+haXe File
+  ClassDeclaration
+    PsiElement(KEYWORD_CLASS)('class')
+    PsiWhiteSpace(' ')
+    PsiElement(IDENTIFIER)('Test')
+    PsiElement({)('{')
+    PsiElement(WS_NEW_LINES)('\n')
+    PsiWhiteSpace('    ')
+    FunctionDeclaration
+      PsiElement(KEYWORD_FUNCTION)('function')
+      PsiWhiteSpace(' ')
+      PsiElement(IDENTIFIER)('foo')
+      PsiElement(()('(')
+      PsiElement())(')')
+      PsiElement(:)(':')
+      Type
+        PsiElement(IDENTIFIER)('void')
+    BlockStatement
+      PsiElement({)('{')
+      PsiElement(WS_NEW_LINES)('\n')
+      PsiWhiteSpace('        ')
+      VarConstDeclaration
+        PsiElement(KEYWORD_VAR)('var')
+        PsiWhiteSpace(' ')
+        VarFunctionName
+          PsiElement(IDENTIFIER)('i')
+        PsiElement(:)(':')
+        Type
+          PsiElement(IDENTIFIER)('int')
+      PsiWhiteSpace(' ')
+      PsiElement(=)('=')
+      PsiWhiteSpace(' ')
+      Expression
+        Literal
+          PsiElement(LITERAL_INT)('10')
+      PsiElement(;)(';')
+      PsiElement(WS_NEW_LINES)('\n')
+      PsiWhiteSpace('        ')
+      PsiElement(KEYWORD_WHILE)('while')
+      PsiElement(()('(')
+      Expression
+        VarFunctionName
+          PsiElement(IDENTIFIER)('i')
+        PsiWhiteSpace(' ')
+        PsiElement(>)('>')
+        PsiWhiteSpace(' ')
+        Literal
+          PsiElement(LITERAL_INT)('0')
+      PsiElement())(')')
+      BlockStatement
+        PsiElement({)('{')
+        PsiElement(WS_NEW_LINES)('\n')
+        PsiWhiteSpace('            ')
+        VarFunctionName
+          PsiElement(IDENTIFIER)('trace')
+        PsiElement(()('(')
+        Expression
+          VarFunctionName
+            PsiElement(IDENTIFIER)('i')
+        PsiElement())(')')
+        PsiElement(;)(';')
+        PsiElement(WS_NEW_LINES)('\n')
+        PsiWhiteSpace('            ')
+        PsiElement(--)('--')
+        VarFunctionName
+          PsiElement(IDENTIFIER)('i')
+        PsiElement(;)(';')
+        PsiElement(WS_NEW_LINES)('\n')
+        PsiWhiteSpace('        ')
+        PsiElement(})('}')
+      PsiElement(WS_NEW_LINES)('\n')
+      PsiWhiteSpace('    ')
+      PsiElement(})('}')
+    PsiElement(WS_NEW_LINES)('\n')
+    PsiElement(})('}')
