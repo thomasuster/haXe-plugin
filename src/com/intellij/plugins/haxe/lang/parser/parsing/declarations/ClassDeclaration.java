@@ -21,7 +21,7 @@ public class ClassDeclaration implements HaxeElementTypes {
         ParserUtils.skipNLS(builder);
         ParserUtils.getToken(builder, mIDENT, HaxeBundle.message("class.name.expected"));
 
-        boolean olreadyExtends = false;
+        boolean alreadyExtends = false;
         boolean isInChain = false;
 
         ParserUtils.skipNLS(builder);
@@ -31,14 +31,14 @@ public class ClassDeclaration implements HaxeElementTypes {
                 ParserUtils.getToken(builder, oCOMMA, HaxeBundle.message("comma.expected"));
             }
             if (builder.getTokenType() == kEXTENDS) {
-                if (olreadyExtends) {
+                if (alreadyExtends) {
                     builder.error(HaxeBundle.message("already.extends"));
                 }
 
                 builder.advanceLexer();
 
                 ParserUtils.skipNLS(builder);
-                ParserUtils.getToken(builder, mIDENT, HaxeBundle.message("class.name.expected"));
+                alreadyExtends = ParserUtils.getToken(builder, mIDENT, HaxeBundle.message("class.name.expected"));
             } else if (builder.getTokenType() == kIMPLEMENTS) {
                 builder.advanceLexer();
 
