@@ -1,0 +1,8 @@
+haXe File
+  PackageDeclaration
+    PsiElement(KEYWORD_PACKAGE)('package')
+    PsiWhiteSpace(' ')
+    PackagePath
+      PsiElement(IDENTIFIER)('error')
+      PsiErrorElement:Semicolon or newline expected
+        <empty list>

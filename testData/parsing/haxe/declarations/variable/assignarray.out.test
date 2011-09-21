@@ -1,0 +1,61 @@
+haXe File
+  ClassDeclaration
+    PsiElement(KEYWORD_CLASS)('class')
+    PsiWhiteSpace(' ')
+    PsiElement(IDENTIFIER)('Test')
+    PsiElement({)('{')
+    PsiElement(WS_NEW_LINES)('\n')
+    PsiWhiteSpace('    ')
+    VarConstDeclaration
+      PsiElement(KEYWORD_VAR)('var')
+      PsiWhiteSpace(' ')
+      VarFunctionName
+        PsiElement(IDENTIFIER)('matrix')
+      PsiElement(:)(':')
+      Type
+        PsiElement(IDENTIFIER)('Array')
+        TemplateDeclaration
+          PsiElement(<)('<')
+          PsiWhiteSpace(' ')
+          Type
+            PsiElement(IDENTIFIER)('Array')
+            TemplateDeclaration
+              PsiElement(<)('<')
+              Type
+                PsiElement(IDENTIFIER)('Int')
+              PsiElement(>)('>')
+          PsiWhiteSpace(' ')
+          PsiElement(>)('>')
+    PsiWhiteSpace(' ')
+    PsiElement(=)('=')
+    PsiWhiteSpace(' ')
+    Expression
+      PsiElement([)('[')
+      Expression
+        PsiElement([)('[')
+        Expression
+          Literal
+            PsiElement(LITERAL_INT)('1')
+        PsiElement(,)(',')
+        PsiWhiteSpace(' ')
+        Expression
+          Literal
+            PsiElement(LITERAL_INT)('1')
+        PsiElement(])(']')
+      PsiElement(,)(',')
+      PsiWhiteSpace(' ')
+      Expression
+        PsiElement([)('[')
+        Expression
+          Literal
+            PsiElement(LITERAL_INT)('1')
+        PsiElement(,)(',')
+        PsiWhiteSpace(' ')
+        Expression
+          Literal
+            PsiElement(LITERAL_INT)('0')
+        PsiElement(])(']')
+      PsiElement(])(']')
+    PsiElement(;)(';')
+    PsiElement(WS_NEW_LINES)('\n')
+    PsiElement(})('}')
