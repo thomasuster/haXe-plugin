@@ -1,0 +1,48 @@
+haXe File
+  ClassDeclaration
+    PsiElement(KEYWORD_CLASS)('class')
+    PsiWhiteSpace(' ')
+    PsiElement(IDENTIFIER)('Test')
+    PsiElement({)('{')
+    PsiElement(WS_NEW_LINES)('\n')
+    PsiWhiteSpace('    ')
+    VarConstDeclaration
+      PsiElement(KEYWORD_CONST)('const')
+      PsiWhiteSpace(' ')
+      VarFunctionName
+        PsiElement(IDENTIFIER)('foo')
+      PsiElement(:)(':')
+      Type
+        PsiElement(IDENTIFIER)('Boolean')
+    PsiWhiteSpace(' ')
+    PsiElement(=)('=')
+    PsiWhiteSpace(' ')
+    Expression
+      PsiElement(!)('!')
+      VarFunctionName
+        PsiElement(IDENTIFIER)('condition')
+      PsiElement([)('[')
+      Expression
+        Literal
+          PsiElement(LITERAL_INT)('0')
+      PsiElement(])(']')
+      PsiWhiteSpace(' ')
+      PsiElement(||)('||')
+      PsiWhiteSpace(' ')
+      PsiElement(()('(')
+      VarFunctionName
+        PsiElement(IDENTIFIER)('today')
+      PsiElement(.)('.')
+      VarFunctionName
+        PsiElement(IDENTIFIER)('getTime')
+      PsiElement(()('(')
+      PsiElement())(')')
+      PsiWhiteSpace(' ')
+      PsiElement(>)('>')
+      PsiWhiteSpace(' ')
+      Literal
+        PsiElement(LITERAL_INT)('0')
+      PsiElement())(')')
+    PsiElement(;)(';')
+    PsiElement(WS_NEW_LINES)('\n')
+    PsiElement(})('}')

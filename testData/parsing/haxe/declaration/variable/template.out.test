@@ -1,0 +1,24 @@
+haXe File
+  ClassDeclaration
+    PsiElement(KEYWORD_CLASS)('class')
+    PsiWhiteSpace(' ')
+    PsiElement(IDENTIFIER)('Test')
+    PsiElement({)('{')
+    PsiElement(WS_NEW_LINES)('\n')
+    PsiWhiteSpace('    ')
+    VarConstDeclaration
+      PsiElement(KEYWORD_VAR)('var')
+      PsiWhiteSpace(' ')
+      VarFunctionName
+        PsiElement(IDENTIFIER)('foo')
+      PsiElement(:)(':')
+      Type
+        PsiElement(IDENTIFIER)('Bar')
+        TemplateDeclaration
+          PsiElement(<)('<')
+          Type
+            PsiElement(IDENTIFIER)('int')
+          PsiElement(>)('>')
+    PsiElement(;)(';')
+    PsiElement(WS_NEW_LINES)('\n')
+    PsiElement(})('}')
