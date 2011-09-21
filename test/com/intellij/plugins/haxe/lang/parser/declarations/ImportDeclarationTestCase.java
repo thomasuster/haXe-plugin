@@ -1,4 +1,6 @@
-package com.intellij.plugins.haxe.lang.parser;
+package com.intellij.plugins.haxe.lang.parser.declarations;
+
+import com.intellij.plugins.haxe.lang.parser.HaxeParsingTestCase;
 
 import java.io.File;
 
