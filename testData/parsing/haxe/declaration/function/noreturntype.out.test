@@ -1,0 +1,22 @@
+haXe File
+  ClassDeclaration
+    PsiElement(KEYWORD_CLASS)('class')
+    PsiWhiteSpace(' ')
+    PsiElement(IDENTIFIER)('Test')
+    PsiElement({)('{')
+    PsiElement(WS_NEW_LINES)('\n')
+    PsiWhiteSpace('    ')
+    AttributeModifier
+      PsiElement(IDENTIFIER)('public')
+    PsiWhiteSpace(' ')
+    PsiElement(KEYWORD_FUNCTION)('function')
+    PsiWhiteSpace(' ')
+    PsiElement(IDENTIFIER)('foo')
+    PsiElement(()('(')
+    PsiElement())(')')
+    PsiErrorElement:Type expected
+      <empty list>
+  PsiElement({)('{')
+  PsiElement(})('}')
+  PsiElement(WS_NEW_LINES)('\n')
+  PsiElement(})('}')

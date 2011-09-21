@@ -1,0 +1,37 @@
+haXe File
+  ClassDeclaration
+    PsiElement(KEYWORD_CLASS)('class')
+    PsiWhiteSpace(' ')
+    PsiElement(IDENTIFIER)('Test')
+    PsiElement({)('{')
+    PsiElement(WS_NEW_LINES)('\n')
+    PsiWhiteSpace('    ')
+    AttributeModifier
+      PsiElement(IDENTIFIER)('public')
+    PsiWhiteSpace(' ')
+    FunctionDeclaration
+      PsiElement(KEYWORD_FUNCTION)('function')
+      PsiWhiteSpace(' ')
+      PsiElement(IDENTIFIER)('foo')
+      PsiElement(()('(')
+      VarFunctionName
+        PsiElement(IDENTIFIER)('param1')
+      PsiElement(:)(':')
+      Type
+        PsiElement(IDENTIFIER)('int')
+      PsiElement(,)(',')
+      PsiWhiteSpace(' ')
+      VarFunctionName
+        PsiElement(IDENTIFIER)('param2')
+      PsiElement(:)(':')
+      Type
+        PsiElement(IDENTIFIER)('Number')
+      PsiElement())(')')
+      PsiElement(:)(':')
+      Type
+        PsiElement(IDENTIFIER)('void')
+    BlockStatement
+      PsiElement({)('{')
+      PsiElement(})('}')
+    PsiElement(WS_NEW_LINES)('\n')
+    PsiElement(})('}')
