@@ -1,0 +1,9 @@
+class Test{
+    function foo():void{
+        if(true){
+            trace(":)");
+        }else{
+            trace("wtf");
+        }
+    }
+}
