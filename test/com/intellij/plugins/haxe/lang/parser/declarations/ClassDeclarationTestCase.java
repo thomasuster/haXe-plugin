@@ -1,16 +1,6 @@
 package com.intellij.plugins.haxe.lang.parser.declarations;
 
-import com.intellij.plugins.haxe.lang.parser.HaxeParsingTestCase;
-
-import java.io.File;
-
-public class ClassDeclarationTestCase extends HaxeParsingTestCase {
-
-    @Override
-    protected String getBasePath() {
-        return super.getBasePath() + "declarations" + File.separator;
-    }
-
+public class ClassDeclarationTestCase extends DeclarationTestCase {
     public void testClass$extends() throws Throwable {
         doTest();
     }
