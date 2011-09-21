@@ -1,7 +1,0 @@
-haXe File
-  ClassDeclaration
-    PsiElement(KEYWORD_CLASS)('class')
-    PsiWhiteSpace(' ')
-    PsiElement(IDENTIFIER)('Foo')
-    PsiElement({)('{')
-    PsiElement(})('}')

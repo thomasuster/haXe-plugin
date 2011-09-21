@@ -1,5 +1,0 @@
-haXe File
-  ImportDeclaration
-    PsiElement(KEYWORD_IMPORT)('import')
-    PsiErrorElement:import path expected
-      <empty list>
